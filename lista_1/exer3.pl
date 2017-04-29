@@ -15,5 +15,13 @@ arco(g,i,14).
 arco(h,j,4).
 arco(h,i,6).
 
-caminho(A,B,[A|B],K):- arco(A,B,K),!.
-caminho(A,B,[A|R],K):- arco(B,X,K),caminho(B,X,[X|R],K1),arco(A,X,K2),K is K1+K2.
+%custo do caminho
+dist(X,Y,C):- estrada(X,Y,C),!.
+dist(X,Y,C):- estrada(X,Z,C1),dist(Z,Y,C2), C is C1+C2.
+
+%caminho(A,B,[A|B],K):- arco(A,B,K),!.
+%caminho(A,B,[A|R],K):- arco(B,X,K),caminho(B,X,[X|R],K1),arco(A,X,K2),K is K1+K2.
+%custo do caminho e criando o caminho, e colocando em uma lista
+caminho(X,Y,[X|Y],C):-estrada(X,Y,C),!.
+caminho(X,Y,[X|Z],C):- estrada(X,Z,C1),caminho(Z,Y,[Z|Y],C2),C is C1+C2.
+

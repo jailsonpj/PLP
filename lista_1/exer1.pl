@@ -54,10 +54,12 @@ filho(X,Y):- homem(Y),pai(X,Y);mae(X,Y).
 filha(X,Y):- mulher(Y),pai(X,Y);mae(X,Y).
 
 % regra pra dizer que x é irmao de y
-irmao(X,Y):- (pai(Z,X),pai(Z,Y));(mae(D,X),mae(D,Y)),X\=Y.
+irmao(X,Y):- homem(Y),(pai(Z,X),pai(Z,Y));(mae(D,X),mae(D,Y)),X\=Y.
+irma(X,Y):- mulher(Y),(pai(Z,X),pai(Z,Y));(mae(D,X),mae(D,Y)),X\=Y.
 
 % regra para dizer que x é tio de Y 
-tio(X,Y):- gerou(Z,Y),irmao(Z,X).
+tio(X,Y):- homem(Y),gerou(Z,Y),irmao(Z,X).
+tia(X,Y):- mulher(Y),gerou(Z,Y),irmao(Z,X).
 
 % regra para dizer que x é primo de y
 primo(X,Y):- pai(Z,Y),tio(Z,X).

@@ -1,0 +1,8 @@
+Existem um arquivo "text.txt" q contém o conteúdo 
+e o programa lê e gera o arquivo "output.txt"
+
+Por enquanto só foi feito isso.
+
+Pra utilizar o script só rodar
+
+?- main('text.txt', 'output.txt').

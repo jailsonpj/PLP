@@ -52,18 +52,18 @@ filho(X,Y):- homem(Y),pai(X,Y);mae(X,Y).
 % regra para encontrar de quem x é filha
 filha(X,Y):- mulher(Y),pai(X,Y);mae(X,Y).
 %regra para encontrar avo
-avo(X,Y):- homem(X), pai(Z,Y),pai(X,Z).
+avo(X,Y):- homem(X),pai(X,Z),(pai(Z,Y);mae(Z,Y)).
 %regra para encontrar avó
-ava(X,Y):- mulher(X),gerou(Z,Y),filho(Z,X).
+ava(X,Y):- mulher(X),mae(X,Z),(pai(Z,Y);mae(Z,Y)).
 %regra para encontrar primo
-primo(X,Y):- pai(Z,Y),tio(Z,X).
+primo(X,Y):- (pai(Z,X);mae(Z,X)),(tio(Z,Y);tia(Z,Y)).
 % regra pra dizer que x é irmao de y
-irmao(X,Y):- homem(Y),(pai(Z,X),pai(Z,Y));(mae(D,X),mae(D,Y)),X\=Y.
-irma(X,Y):- mulher(Y),(pai(Z,X),pai(Z,Y));(mae(D,X),mae(D,Y)),X\=Y.
-% regra para dizer que x é tio de Y 
+irmao(X,Y):- (pai(Z,Y),pai(Z,X)),(mae(Z,Y),mae(Z,X)),X\=Y.
+irma(X,Y):- mulher(X),(pai(Z,X),pai(Z,Y));(mae(Z,X),mae(Z,Y)),filha(X,Z),X\=Y,!.
+% regra para dizer que x é tio de Y
 tio(X,Y):- homem(Y),gerou(Z,Y),irmao(Z,X).
 tia(X,Y):- mulher(Y),gerou(Z,Y),irmao(Z,X).
 
 % regra para dizer que x é ancestral de y
-ancestral(X,Y):- pai(X,Y).
-ancestral(X,Y):- pai(X,Y),ancestral(Z,Y).
+ancestral(X,Y):- (pai(X,Y);mae(X,Y)).
+ancestral(X,Y):- (pai(X,Z);mae(X,Z)),ancestral(Z,Y).

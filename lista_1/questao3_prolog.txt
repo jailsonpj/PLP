@@ -1,0 +1,32 @@
+a)a(X,c(d,X)) = a(2,c(d,Y))
+	Não unifica, pois o "X" deve ser igual o "Y", para unificar
+
+b)a(X,Y) = a(b(c,Y),Z)
+	Unifica
+		b(c,Y) = K -> a(K,Z) = a(X,Y)
+
+c)ponto(A,B) = ponto(X,Y,Z)	
+	Não unifica, pois ponto(X,Y,Z) tem 3 parâmetros.
+
+d)mais(2,2) = 4
+	Unifica
+		mais(3,3) = 6.
+		mais(X,Y) = Z.
+
+e)t(p(-1,0),P2,P3) = t(P1, p(1,0),P3)
+	Unifica, pois p(X,Y) retorna um ponto
+		t(p(X,Y), P2, P3) = t(P1, P(K, Z), P3)
+		
+f)a(X,c(d,X)) = a(2,c(d,Y))
+	Não unifica, pois o "X" deve ser igual o "Y", para unificar
+
+g)X = Y, a(X) = a(Y), X = hello	
+	Unifica
+			X = hello
+			X = Y
+			Y = hello
+		
+h)a(b,X) = a(b,c(Y,e)) = X = hello
+	Não unifica, pois o valor de X é pré-determinado como "hello"
+			a(b,hello) = a(b,c(Y,e))
+			c(Y, e) não retorna "hello"

@@ -43,6 +43,11 @@ homem(hugo).
 homem(andre).
 homem(jorge).
 homem(estevao).
+casado(joao,maria).
+casado(joaquim,andreia).
+casado(alcindo,joaquina).
+casado(justino,martinha).
+casado(andre,balbina).
 
 % regra para encontrar quem gerou X
 gerou(X,Y):- pai(X,Y);mae(X,Y).

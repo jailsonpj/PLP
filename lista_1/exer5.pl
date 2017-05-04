@@ -16,7 +16,6 @@ recebe :-
     write('Próximo valor: '), nl, 
     repeat,
     read(X),
-    
     write(Stream, X), write(Stream, '.'), nl(Stream),
     X = 'fim', close(Stream), !.
 

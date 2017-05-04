@@ -1,0 +1,81 @@
+ 
+A --> a(X, c(d,X)) = a(2, c(d,Y)).
+    X deve ser exatamente igual Y para que unifique;
+    
+B --> a(X,Y) = a(b(c,Y),Z).
+    b(c,Y) = VARIAVEL -> a(VARIAVEL, Z) = a(X,Y)
+    Há unificação;
+    
+C --> ponto(A,B) = ponto(X,Y,Z).
+    Há parâmetros diferentes em ambos, portanto não unifica;
+    
+D --> mais(2,2) = 4.
+    Exemplo:
+        mais(2,X).
+        X = 2.
+        4.
+        true.
+    Unifica;
+    
+E --> t(p(-1,0),P2,P3) = t(P1, p(1,0),P3).
+    t(p(X,Y) P2, P3) = t(P1, p(A, B), P3).
+    p(X,Y) retorna algum pornto, portanto unifica.
+    
+F --> a(X,c(d,X)) = a(2,c(d,Y)).
+    É necessário que X seja exatamente igual Y.
+    Não Unifica;
+    
+G --> X = Y, a(X) = a(Y), X = hello.
+    Exemplo:
+        X = 'hello'.
+        X = Y.
+        Y = 'hello'.
+        true.
+    Unifica;
+    
+H --> a(b,X) = a(b,c(Y,e)) = X = hello.
+    O valor inicial de X é (X = 'hello'),
+    portanto não unifica.
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

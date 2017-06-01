@@ -1,4 +1,3 @@
 (defun soma (lista)
-    (eval (setf lista 
-        (if (rem 2 lista) 0
-            (cons '+ (remove-if-not #'integerp lista)))))
+    (eval (setf lista (cons '+ (remove-if-not (lambda (x) (evenp x)) lista))))
+)
